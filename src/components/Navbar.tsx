@@ -1,3 +1,5 @@
+"use client"
+import { useTheme } from "next-themes"
 import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
@@ -27,12 +29,19 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Heart, Lock, Plane, Sun } from 'lucide-react'
+import { Heart, Lock, Plane, Sun, Moon, CircleDot, CircleDotIcon } from 'lucide-react'
+import { useEffect, useState } from "react"
 
 
 export const Navbar = () => {
+    const { theme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => setMounted(true), [])
+
+    if (!mounted) return null
     return (
-        <nav className='fixed shadow-md flex flex-row w-full items-center justify-between px-5 py-3'>
+        <nav className='fixed shadow-md dark:border dark:shadow flex flex-row w-full items-center justify-between px-5 py-3'>
             <Link href="/" className='text-3xl font-bold flex flex-row items-center'>Dreams<span className='text-red-500 me-2'>Tour</span>
                 <Plane className='h-14' />
             </Link>
@@ -417,10 +426,18 @@ export const Navbar = () => {
                 </DropdownMenu>
             </div>
             <div className='flex flex-row items-center'>
-                <Sun className='cursor-pointer me-4 h-5' />
-                <Heart className='cursor-pointer me-4 h-5' />
+                <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="me-4 bg-transparent dark:text-white border hover:bg-transparent text-black border-0 shadow-none cursor-pointer">
+                    {theme === "dark" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+                </Button>
+                <div className="relative inline-flex items-center">
+                    <Heart className="h-5 w-5 text-black dark:text-white cursor-pointer me-4" />
+                    <span className="absolute right-3 top-0 flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+                    </span>
+                </div>
                 <Button className='capitalize me-3 bg-transparent dark:text-white border hover:bg-transparent text-black'>
-                    add your listing
+                    <CircleDotIcon /> add your listing
                 </Button>
                 <Dialog>
                     <form>
