@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Heart, Lock, Plane, Sun, Moon, CircleDot, CircleDotIcon } from 'lucide-react'
+import { Heart, Lock, Plane, Sun, Moon, CircleDotIcon } from 'lucide-react'
 import { useEffect, useState } from "react"
 
 
