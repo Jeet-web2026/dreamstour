@@ -41,7 +41,7 @@ export const Navbar = () => {
 
     if (!mounted) return null
     return (
-        <nav className='fixed shadow-md dark:border dark:shadow flex flex-row w-full items-center justify-between px-5 py-3'>
+        <nav className='fixed shadow-md bg-white dark:bg-background dark:border dark:shadow flex flex-row w-full items-center justify-between px-5 py-3'>
             <Link href="/" className='text-3xl font-bold flex flex-row items-center'>Dreams<span className='text-red-500 me-2'>Tour</span>
                 <Plane className='h-14' />
             </Link>
